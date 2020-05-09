@@ -1,4 +1,4 @@
-const search = document.querySelector('.fa-search');
+const search = document.querySelector('#searchIcon');
 search.addEventListener("click", searchPokemon);
 
 function searchPokemon() {

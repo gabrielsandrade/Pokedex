@@ -1,12 +1,19 @@
 const search = document.querySelector('#searchIcon');
+const searchBox = document.querySelector("#pokemon-search");
 search.addEventListener("click", searchPokemon);
+searchBox.addEventListener("keydown", (event) =>{
+    console.log(event['key']);
+    if (event['key'] == "Enter"){
+        searchPokemon();
+    }    
+})
 
 function searchPokemon() {
     const pokeSearch = document.querySelector("#pokemon-search")
     const pokemon = pokeSearch.value;
     let encontrei = false;
     for (var poke of data){
-        if (poke["Name"] == pokemon){
+        if (poke["Name"].toLowerCase().trim() == pokemon.toLowerCase().trim()){
             console.log("Encontrei");
             console.log(poke);
             changeCard(poke);
@@ -32,6 +39,8 @@ function changeCard(poke) {
     let spDef = table[4].querySelector(".value");
     let speed = table[5].querySelector(".value");
     let pic = document.querySelector("#picture");
+    let types = document.querySelectorAll("#type");
+    let legendary = document.querySelector(".legendary").lastElementChild;
     pic['src'] = "sprites/" + poke["Name"] + ".png";
 
     name.innerHTML = poke["Name"];
@@ -41,6 +50,9 @@ function changeCard(poke) {
     spAtk.innerHTML = poke["Sp. Atk"];
     spDef.innerHTML = poke["Sp. Def"];
     speed.innerHTML = poke["Speed"];
+    types[0].innerHTML = poke["Type 1"]
+    types[1].innerHTML = poke["Type 2"]
+    legendary.innerHTML = poke["Legendary"] == "False" ? "No" : "Yes";
 
     const values = [poke["HP"], poke["Attack"], poke["Defense"],poke["Sp. Atk"], poke["Sp. Def"],poke["Speed"]];
     

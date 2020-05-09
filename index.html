@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap" rel="stylesheet">
+    <link href="fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+    <title>Pokemon info</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="search">
+            <div>
+                <input type="text" name="pokemon" id="pokemon-search" placeholder="Pokemon">
+                <i class="fas fa-search" style="color: whitesmoke;"></i>
+            </div>
+        </div>
+        <div class="card-area">
+            <div class="card">
+                <div id="pic" style="padding: 10px;">
+                    <h3>Bulbasaur</h4>
+                    <img id="picture" src="sprites/Bulbasaur.png" alt="Bulbasaur" width="100px">
+                </div>
+                <div class="type">
+                    <h4>Type</h3>
+                    <ul class="types">
+                        <li id="type">Grass</li>
+                        <li id="type">Poison</li>
+                    </ul>
+                </div>
+                <div class="legendary">
+                    <h4>Legendary</h4>
+                    <p>No</p>
+                </div>
+
+                <h4>Status</h4>
+                <div class="status">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>HP</td>
+                                <td class="value">45</td>
+                                <td class="barchart">
+                                    <div id="hp" class="bar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Attack</td>
+                                <td class="value">49</td>
+                                <td class="barchart">
+                                    <div id="atk" class="bar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>Defense</td>
+                                <td class="value">49</td>
+                                <td class="barchart">
+                                    <div id="def" class="bar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sp. Atk</td>
+                                <td class="value">65</td>
+                                <td class="barchart">
+                                    <div id="spAtk" class="bar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sp. Def.</td>
+                                <td class="value">65</td>
+                                <td class="barchart">
+                                    <div id="spDef" class="bar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Speed</td>
+                                <td class="value">45</td>
+                                <td class="barchart">
+                                    <div id="speed" class="bar"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="csvjson.json"></script>
+<script src="script.js"></script>
+<script src="search.js"></script>

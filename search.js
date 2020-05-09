@@ -2,7 +2,6 @@ const search = document.querySelector('#searchIcon');
 const searchBox = document.querySelector("#pokemon-search");
 search.addEventListener("click", searchPokemon);
 searchBox.addEventListener("keydown", (event) =>{
-    console.log(event['key']);
     if (event['key'] == "Enter"){
         searchPokemon();
     }    
@@ -15,7 +14,6 @@ function searchPokemon() {
     for (var poke of data){
         if (poke["Name"].toLowerCase().trim() == pokemon.toLowerCase().trim()){
             console.log("Encontrei");
-            console.log(poke);
             changeCard(poke);
             encontrei = true;
             break
@@ -28,7 +26,6 @@ function searchPokemon() {
 }
 
 function changeCard(poke) {
-    console.log(poke);
     let bars = document.querySelectorAll(".bar");
     let name = document.querySelector("#pic").firstElementChild;
     let table = document.getElementsByTagName("tbody")[0].children;

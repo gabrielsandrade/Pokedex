@@ -58,7 +58,6 @@ function changeCard(poke) {
     }
 
     for (var st in values) {
-        console.log(stats[st]);
         barChart(values, st)
     }
 }

@@ -1,10 +1,18 @@
 const search = document.querySelector('#searchIcon');
 const searchBox = document.querySelector("#pokemon-search");
+var listPokemons = [];
+for (let pokemon of data){
+    listPokemons.push(pokemon["Name"]);
+}
+
 search.addEventListener("click", searchPokemon);
-searchBox.addEventListener("keydown", (event) =>{
+searchBox.addEventListener("keyup", (event) =>{
     if (event['key'] == "Enter"){
         searchPokemon();
-    }    
+    }else {
+        const val = (event.target.value);
+        autoComplete(val);
+    }
 })
 
 function searchPokemon() {
@@ -60,4 +68,17 @@ function changeCard(poke) {
     for (var st in values) {
         barChart(values, st)
     }
+}
+
+function autoComplete(val){
+    var pokeReturn = [];
+
+    for (var poke of data){
+        //console.log(poke["Name"].toLowerCase().trim().slice(0, val.length), val);
+        if (poke["Name"].toLowerCase().trim().slice(0, val.length) == val.toLowerCase().trim()){
+            pokeReturn.push(poke["Name"]);
+        }
+    }
+
+    console.log(pokeReturn);
 }

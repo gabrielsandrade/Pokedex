@@ -1,17 +1,53 @@
 const search = document.querySelector('#searchIcon');
 const searchBox = document.querySelector("#pokemon-search");
+var autocomplete_results = document.getElementById("autoCompleteResults");
 var listPokemons = [];
 for (let pokemon of data){
     listPokemons.push(pokemon["Name"]);
 }
 
-search.addEventListener("click", searchPokemon);
+//search.addEventListener("click", searchPokemon);
 searchBox.addEventListener("keyup", (event) =>{
     if (event['key'] == "Enter"){
         searchPokemon();
     }else {
         const val = (event.target.value);
-        autoComplete(val);
+        if (val.length > 0) {
+            const card = document.querySelector(".card");
+            card.style.zIndex = -1;
+            var pokeReturn = [];
+            autocomplete_results.innerHTML = '';
+            pokeReturn = autoComplete(val);
+            
+            for (i = 0; i < pokeReturn.length; i++) {
+                const li = document.createElement('li');
+                li.innerHTML = pokeReturn[i];
+                li.addEventListener('click', (event)=> {
+                    const value = event.target.textContent;
+                    searchBox.value = value;
+                    searchPokemon(value);
+                    autocomplete_results.style.display = "none";
+                    card.style.zIndex = 1;
+                });
+                autocomplete_results.appendChild(li);
+                //autocomplete_results.innerHTML += '<li>' + pokeReturn[i] + '</li>';
+    
+            }
+            autocomplete_results.style.display = 'block';
+            const click = document.addEventListener('click', (event)=>{
+                if (event.target.tagName != 'LI'){
+                    autocomplete_results.style.display = "none";
+                    card.style.zIndex = 1;
+                };
+            });
+
+        } else {
+            const card = document.querySelector(".card");
+            card.style.zIndex = 0;
+            pokeReturn = [];
+            autocomplete_results.innerHTML = '';
+        }
+        
     }
 })
 
@@ -80,5 +116,5 @@ function autoComplete(val){
         }
     }
 
-    console.log(pokeReturn);
+    return (pokeReturn);
 }
